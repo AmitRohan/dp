@@ -12,7 +12,7 @@ geotab.addin.driverProfile = () => {
    * Initialize the add-in
    */
   let initialize = () => {
-      this.title = "Code Base Initialized"
+      this.title = "driverProfile Initialized"
       console.log(this.title);
   };
 
@@ -21,7 +21,7 @@ geotab.addin.driverProfile = () => {
   * App Logic
   */
   let render = () => {
-        this.title ="Code Base Rendered";
+        this.title ="driverProfile Rendered";
         console.log(this.title);
         // api.call('Get', {
         //     typeName: 'User'
@@ -48,7 +48,7 @@ geotab.addin.driverProfile = () => {
    * Aborts
    */
   let abort = () => {
-      this.title ="Code Base Aborted";
+      this.title ="driverProfile Aborted";
       console.log(this.title);
   };
 
