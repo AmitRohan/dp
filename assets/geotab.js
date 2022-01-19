@@ -37,7 +37,14 @@ geotab.addin.driverProfile = () => {
                 console.log("Session ",result.sessionId);
                 console.log("Session ",result.userName);
                 console.log("Session ",result.database);
-                window.myDriverProfileNgAppRef.zone.run(() => { window.myDriverProfileNgAppRef.loadGeoTabSDKData(result.database,result.sessionId,result.database); });  
+                var intervalId = setInterval(() => {
+                    if(window.myDriverProfileNgAppRef && window.myDriverProfileNgAppRef.zone){
+                        window.myDriverProfileNgAppRef.zone.run(() => { window.myDriverProfileNgAppRef.loadGeoTabSDKData(result.database,result.sessionId,result.database); });
+                        clearInterval(intervalId);
+                    }else{
+                        console.log("driverProfile app not ready yet, checking again");
+                    }
+                },500)
             }); 
         };
          
