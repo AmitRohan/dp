@@ -37,7 +37,7 @@ geotab.addin.driverProfile = () => {
                 console.log("Session ",result.sessionId);
                 console.log("Session ",result.userName);
                 console.log("Session ",result.database);
-                window.myGeoKruzrNgAppRef.zone.run(() => { window.myGeoKruzrNgAppRef.loadGeoTabSDKData(result.database,result.sessionId,result.database); });  
+                window.myDriverProfileNgAppRef.zone.run(() => { window.myDriverProfileNgAppRef.loadGeoTabSDKData(result.database,result.sessionId,result.database); });  
             }); 
         };
          
@@ -76,7 +76,6 @@ geotab.addin.driverProfile = () => {
       * been modified since it was first initialized.
       */
       focus(freshApi, freshState) {
-          console.log("Back In AddIn");
           api = freshApi;
           state = freshState;
 
@@ -88,7 +87,7 @@ geotab.addin.driverProfile = () => {
       * Use this function to save state or commit changes to a datastore or release memory.
       */
       blur() {
-          console.log("Left AddIn");
+          console.log("Left driverProfile");
           abort();
       }
   };
