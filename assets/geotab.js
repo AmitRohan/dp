@@ -7,13 +7,33 @@ geotab.addin.driverProfile = () => {
   /* Scope variables */
   let api; // Ref https://github.com/Geotab/mg-api-js
   let state;
+  let angularAppInitCheckInterval;
 
   /**
    * Initialize the add-in
    */
   let initialize = () => {
-      this.title = "driverProfile Initialized"
-      console.log(this.title);
+      console.log("Driver Profile Initialized");
+  };
+
+  /**
+   * Clears Angular Init check interval
+   */
+  let clearAngularAppinitCheck = () => {
+      clearInterval(angularAppInitCheckInterval);
+  };
+
+  let onAppStart = () => {
+      api.getSession((result) => {
+          angularAppInitCheckInterval = setInterval(() => {
+              if(window.myDriverProfileNgAppRef && window.myDriverProfileNgAppRef.zone){
+                  window.myDriverProfileNgAppRef.zone.run(() => { window.myDriverProfileNgAppRef.loadGeoTabSDKData(result.database,result.sessionId,result.database); });
+                  clearAngularAppinitCheck();
+              }else{
+                  console.log("Driver Profile app not ready yet, checking again");
+              }
+          },500)
+      });
   };
 
   /**
@@ -21,42 +41,16 @@ geotab.addin.driverProfile = () => {
   * App Logic
   */
   let render = () => {
-        this.title ="driverProfile Rendered";
-        console.log(this.title);
-        // api.call('Get', {
-        //     typeName: 'User'
-        // }, function (result) {
-        //     if (result) {
-        //         console.log("USERS Result ",result);
-        //     }
-        // }, function (err) {
-        //     console.error("USERS ERR ",err);
-        // });
-        const startApplication = () => {        
-            api.getSession(function (result) {
-                console.log("Session ",result.sessionId);
-                console.log("Session ",result.userName);
-                console.log("Session ",result.database);
-                var intervalId = setInterval(() => {
-                    if(window.myDriverProfileNgAppRef && window.myDriverProfileNgAppRef.zone){
-                        window.myDriverProfileNgAppRef.zone.run(() => { window.myDriverProfileNgAppRef.loadGeoTabSDKData(result.database,result.sessionId,result.database); });
-                        clearInterval(intervalId);
-                    }else{
-                        console.log("driverProfile app not ready yet, checking again");
-                    }
-                },500)
-            }); 
-        };
-         
-        startApplication();
+        console.log("Driver Profile Rendered");
+        onAppStart();
   }
 
   /**
    * Aborts
    */
   let abort = () => {
-      this.title ="driverProfile Aborted";
-      console.log(this.title);
+      console.log("Driver Profile Aborted");
+      clearAngularAppinitCheck();
   };
 
   return {
@@ -94,7 +88,6 @@ geotab.addin.driverProfile = () => {
       * Use this function to save state or commit changes to a datastore or release memory.
       */
       blur() {
-          console.log("Left driverProfile");
           abort();
       }
   };
