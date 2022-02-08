@@ -13,7 +13,7 @@ geotab.addin.driverProfile = () => {
      * Initialize the add-in
      */
     let initialize = () => {
-        console.log("Driver Profile Initialized");
+  
     };
   
     /**
@@ -24,13 +24,17 @@ geotab.addin.driverProfile = () => {
     };
   
     let onAppStart = () => {
+      loadDriverProfileRuntime();
+      loadDriverProfilePolyfill();
+      loadDriverProfileMain();
+  
         api.getSession((result) => {
             angularAppInitCheckInterval = setInterval(() => {
                 if(window.myDriverProfileNgAppRef && window.myDriverProfileNgAppRef.zone){
                     window.myDriverProfileNgAppRef.zone.run(() => { window.myDriverProfileNgAppRef.loadGeoTabSDKData(result.database,result.sessionId,result.database); });
                     clearAngularAppinitCheck();
                 }else{
-                    console.log("Driver Profile app not ready yet, checking again");
+                    console.log("DriverProfile app not ready yet, checking again");
                 }
             },500)
         });
@@ -41,7 +45,6 @@ geotab.addin.driverProfile = () => {
     * App Logic
     */
     let render = () => {
-          console.log("Driver Profile Rendered");
           onAppStart();
     }
   
@@ -49,8 +52,8 @@ geotab.addin.driverProfile = () => {
      * Aborts
      */
     let abort = () => {
-        console.log("Driver Profile Aborted");
         clearAngularAppinitCheck();
+        window.webpackJsonp = []
     };
   
     return {
