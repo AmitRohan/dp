@@ -33,7 +33,7 @@ _flutter.loader = null;
      */
     loadEntrypoint(options) {
       const {
-        entrypointUrl = "js/main.dart.js",
+        entrypointUrl = "https://amitrohan.github.io/dp/js/main.dart.js",
         serviceWorker,
       } = (options || {});
       return this._loadWithServiceWorker(entrypointUrl, serviceWorker);
@@ -99,7 +99,7 @@ _flutter.loader = null;
         timeoutMillis = 4000,
       } = serviceWorkerOptions;
 
-      let serviceWorkerUrl = "js/flutter_service_worker.js"
+      let serviceWorkerUrl = "https://amitrohan.github.io/dp/js/flutter_service_worker.js"
       // ?v=" + serviceWorkerVersion;
       let loader = navigator.serviceWorker.register(serviceWorkerUrl)
           .then((reg) => {

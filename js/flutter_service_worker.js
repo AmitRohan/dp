@@ -13,7 +13,7 @@ const RESOURCES = {
 "canvaskit/profiling/canvaskit.js": "ae2949af4efc61d28a4a80fffa1db900",
 "canvaskit/profiling/canvaskit.wasm": "95e736ab31147d1b2c7b25f11d4c32cd",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"flutter.js": "0816e65a103ba8ba51b174eeeeb2cb67",
+"js/flutter.js": "0816e65a103ba8ba51b174eeeeb2cb67",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
@@ -21,7 +21,7 @@ const RESOURCES = {
 "index.html": "ce3ca76afaaf3882641dbb0b599d76c8",
 "/": "ce3ca76afaaf3882641dbb0b599d76c8",
 "js/geotab.js": "fd73891d5583c4f9fac2453d7aa43647",
-"main.dart.js": "4129eaffe5bae87526864ff8af362805",
+"js/main.dart.js": "4129eaffe5bae87526864ff8af362805",
 "manifest.json": "ae8977997f4e4336c17a6b7a81820ad8",
 "version.json": "3870d05900c79e507df55a1273048e97"
 };
@@ -29,7 +29,7 @@ const RESOURCES = {
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = [
-  "main.dart.js",
+  "js/main.dart.js",
 "index.html",
 "assets/NOTICES",
 "assets/AssetManifest.json",
