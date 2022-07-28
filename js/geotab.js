@@ -2,9 +2,15 @@
 * @returns {{initialize: Function, focus: Function, blur: Function}}
 */
 
-const bootStrapFlutter = function(ev) {
+const bootStrapFlutter = function() {
     var loading = document.querySelector('#l3435322');
     loading.textContent = "Loading entrypoint...";
+    if(_flutter == null) {
+        setTimeout(()=>{
+            bootStrapFlutter();
+        },300);
+        return;
+    }
     _flutter.loader.loadEntrypoint({
       serviceWorker: {
         serviceWorkerVersion: serviceWorkerVersion,
