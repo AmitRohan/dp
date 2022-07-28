@@ -95,6 +95,6 @@ try {
           };
     };    
 }catch(e){
-    addFlutterApp();
+    bootStrapFlutter();
     console.log(e);
 }
