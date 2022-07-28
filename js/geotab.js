@@ -18,11 +18,6 @@ const bootStrapFlutter = function(ev) {
     });
   };
 
-const addFlutterApp = () => {
-    window.addEventListener('load',bootStrapFlutter);
-    // window.removeEventListener('load',bootStrapFlutter);
-};
-
 try {
     if(geotab != null){
         geotab.addin.morpheusFleetPulse = () => {
@@ -55,7 +50,7 @@ try {
                     };
                     localStorage.setItem("z_mgd",window.btoa(JSON.stringify(toSave)));
         
-                    addFlutterApp();
+                    bootStrapFlutter();
                 }); 
             };
           
